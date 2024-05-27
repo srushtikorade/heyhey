@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Create a file
+touch myfile.txt
+echo "Created file: myfile.txt"
+
+# Create a hard link to the file
+ln myfile.txt myfile_hardlink.txt
+echo "Created hard link: myfile_hardlink.txt"
+
+# Create a soft link to the file
+ln -s myfile.txt myfile_symlink.txt
+echo "Created soft link: myfile_symlink.txt"
+
+# Append names of hidden files to hidden_files.txt
+echo "Appending names of hidden files to hidden_files.txt"
+for file in .*
+do
+    if [ -f "$file" ]; then
+        echo "$file" >> hidden_files.txt
+    fi
+done
+
+# Convert filenames from uppercase to lowercase
+echo "Converting filenames from uppercase to lowercase"
+for file in *
+do
+    # Check if the filename contains uppercase letters
+    if [[ "$file" =~ [A-Z] ]]; then
+        # Convert the filename to lowercase
+        lowercase_file=$(echo "$file" | tr 'A-Z' 'a-z')
+        # Rename the file
+        mv "$file" "$lowercase_fil

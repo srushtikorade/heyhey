@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Prompt the user to enter the directory
+echo "Enter the directory path:"
+read dir
+
+# Check if the directory exists
+if [ ! -d "$dir" ]; then
+    echo "The specified directory does not exist."
+    exit 1
+fi
+
+# Initialize variables to store the smallest file name and its length
+smallest_file=""
+smallest_length=0
+
+# Loop through all files in the directory
+for file in "$dir"/*
+do
+    # Check if it is a regular file
+    if [ -f "$file" ]; then
+        # Get the base name of the file (excluding the directory path)
+        base_name=$(basename "$file")
+        # Get the length of the file name
+        name_length=${#base_name}
+        
+        # Update the smallest file name and its length if needed
+        if [ -z "$smallest_file" ] || [ "$name_length" -lt "$smallest_length" ]; then
+            smallest_file="$base_name"
+            smallest_length="$name_length"
+        fi
+    fi
+done
+
+# Check if a smallest file was found and print the result
+if [ -n "$smallest_file" ]; then
+    echo "The file with the smallest name is: $smallest_file"
+else
+    echo "No files found in the specified directory."
+fi

@@ -1,0 +1,32 @@
+1)Create input.txt with some numbers (one per line):
+
+
+echo -e "1\n2\n3\n4\n5\n6\n7\n8\n9\n10" > input.txt
+
+
+2)Create the shell script classify_numbers.sh:
+
+
+#!/bin/bash
+
+# Check if input.txt exists
+if [ ! -f "input.txt" ]; then
+    echo "input.txt not found!"
+    exit 1
+fi
+
+# Clear the content of even.txt and odd.txt if they exist
+> even.txt
+> odd.txt
+
+# Read numbers from input.txt
+while read -r number; do
+    if [ $((number % 2)) -eq 0 ]; then
+        echo "$number" >> even.txt
+    else
+        echo "$number" >> odd.txt
+    fi
+done < input.txt
+
+echo "Even numbers are stored in even.txt"
+echo "Odd numbers are stored in odd.txt"
