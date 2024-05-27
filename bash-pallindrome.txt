@@ -1,8 +1,10 @@
 #!/bin/bash
-echo "Enter a String"
+
+# Prompt the user to enter a string
+echo "Enter a String:"
 read input
 
-# Initialize reverse string
+# Initialize the reverse string variable
 reverse=""
 
 # Get the length of the input string
