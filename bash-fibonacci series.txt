@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Program for Fibonacci Series
+
+# Prompt the user to enter the number of terms
+echo "Enter the number of terms for the Fibonacci series:"
+read N
+
+
+
+# First number of the Fibonacci Series
+a=0
+
+# Second number of the Fibonacci Series
+b=1 
+
+echo "The Fibonacci series is:"
+
+# Loop to generate the Fibonacci series
+for (( i=0; i<N; i++ ))
+do
+    echo -n "$a "
+    fn=$((a + b))  # Calculate the next number in the series
+    a=$b  # Update 'a' to the next number
+    b=$fn  # Update 'b' to the next number
+done
+# End of for loop
+echo  # Print a newline at the end
