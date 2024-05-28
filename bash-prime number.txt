@@ -8,10 +8,10 @@ is_prime() {
     fi
     for (( i = 2; i * i <= num; i++ )); do
         if (( num % i == 0 )); then
-            return 1
+            return 0
         fi
     done
-    return 0
+    return 1
 }
 
 # Read a number from the user
