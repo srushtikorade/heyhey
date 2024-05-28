@@ -30,4 +30,4 @@ do
         # Convert the filename to lowercase
         lowercase_file=$(echo "$file" | tr 'A-Z' 'a-z')
         # Rename the file
-        mv "$file" "$lowercase_fil
+        mv "$file" "$lowercase_file
